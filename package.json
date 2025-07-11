@@ -1,0 +1,45 @@
+{
+  "name": "document-pipeline",
+  "version": "1.0.0",
+  "description": "Multi-stage document processing pipeline",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start:upload": "ts-node src/upload-service/index.ts",
+    "start:ocr": "ts-node src/ocr-processor/index.ts",
+    "start:validation": "ts-node src/validation-service/index.ts",
+    "start:persistence": "ts-node src/persistence-service/index.ts",
+    "start:all": "concurrently \"npm run start:upload\" \"npm run start:ocr\" \"npm run start:validation\" \"npm run start:persistence\"",
+    "dev:upload": "nodemon --watch src/upload-service --exec ts-node src/upload-service/index.ts",
+    "dev:ocr": "nodemon --watch src/ocr-processor --exec ts-node src/ocr-processor/index.ts",
+    "dev:validation": "nodemon --watch src/validation-service --exec ts-node src/validation-service/index.ts",
+    "dev:persistence": "nodemon --watch src/persistence-service --exec ts-node src/persistence-service/index.ts",
+    "dev:all": "concurrently \"npm run dev:upload\" \"npm run dev:ocr\" \"npm run dev:validation\" \"npm run dev:persistence\"",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/cors": "^2.8.19",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "ioredis": "^5.4.1",
+    "multer": "^1.4.5-lts.1",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
+    "@types/multer": "^1.4.11",
+    "@types/node": "^20.14.9",
+    "@types/uuid": "^9.0.8",
+    "concurrently": "^8.2.2",
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.4",
+    "ts-jest": "^29.1.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
+  }
+}
