@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useRef, ChangeEvent } from 'react';
-
-// Define types that mirror your backend's document.ts
 type DocumentStatus =
   | "UPLOADED"
   | "OCR_PENDING"

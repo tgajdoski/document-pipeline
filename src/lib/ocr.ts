@@ -4,18 +4,13 @@ import { OCRResult } from "../types/document";
 
 /**
  * Simulates an Optical Character Recognition (OCR) process.
- * In a real application, this would call an external OCR service API
- * (e.g., Google Cloud Vision, Azure AI Document Intelligence).
- *
  * @param imageBuffer The buffer of the document image (or PDF, etc.).
  * @returns A Promise that resolves with an OCRResult object.
  */
 export function simulateOCR(imageBuffer: Buffer): Promise<OCRResult> {
   return new Promise((resolve) => {
-    // Simulate a network/processing delay for the OCR operation
     setTimeout(() => {
-      // For the purpose of this prototype, we return a fixed, but
-      // contextually relevant, simulated text for an invoice.
+      // For the purpose of this prototype, we return a fixed, but contextually relevant, simulated text for an invoice.
       const simulatedText = `
         Invoice Number: INV-2025-001
         Customer: Acme Corp
@@ -33,9 +28,9 @@ export function simulateOCR(imageBuffer: Buffer): Promise<OCRResult> {
       `;
       resolve({
         text: simulatedText,
-        confidence: 0.98, // High confidence for a successful simulation
+        confidence: 0.98, 
         language: "en",
       });
-    }, 500); // 500ms delay
+    }, 500);
   });
 }
