@@ -13,6 +13,8 @@ The pipeline is designed with a microservices-like approach, where each stage is
 
 ### Pipeline Flow
 
+![alt text](document_processing.png)
+
 1.  **Document Upload:** Documents are received via an HTTP API endpoint. The document content and initial metadata are stored in Redis, and a message is published to the `document_queue` Redis Stream.
 2.  **OCR Simulation:** A dedicated processor consumes messages from `document_queue`. It fetches the document, simulates OCR (using a provided mock function), updates the document with OCR results, and publishes a message to the `ocr_result_queue`.
 3.  **Validation:** Another processor listens to `ocr_result_queue`. It extracts structured metadata (e.g., invoice number, total amount) from the simulated OCR text and validates the presence of required fields. It updates the document status and extracted metadata, then publishes to `validation_queue`.
